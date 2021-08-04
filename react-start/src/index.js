@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.js';
 
-const container = React.createElement(
-'div',
-{id: 'main', className : 'container'},
-'Hello World!!' 
-);
-
-ReactDOM.render(container, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
