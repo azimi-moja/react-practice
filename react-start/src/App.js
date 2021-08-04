@@ -1,4 +1,5 @@
 import React from 'react';
+import Product from './component/product/Product.js'
 
 //comment becuase use jsx
 // const App = () => {
@@ -11,7 +12,10 @@ import React from 'react';
 
 const App =() => {
     return (
-        <div id='main' className='container'>Hello JSX!!!</div>
+        <div id='main' className='container'>
+            Hello JSX!!!
+            <Product />        
+        </div>
         );
 }
 
