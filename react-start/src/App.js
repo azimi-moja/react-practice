@@ -10,13 +10,25 @@ import Product from './component/product/Product.js'
 //         );
 // }
 
-const App =() => {
-    return (
-        <div id='main' className='container'>
-            Hello JSX!!!
-            <Product />        
-        </div>
+//comment because use class
+// const App =() => {
+//     return (
+//         <div id='main' className='container'>
+//             Hello JSX!!!
+//             <Product />        
+//         </div>
+//         );
+// }
+
+class App extends React.Component {
+    render() {
+        return (
+            <div id='main' className='container'>
+                Hello Class Compeont!!!
+                <Product />        
+            </div>
         );
+    }
 }
 
 export default App;
