@@ -25,7 +25,9 @@ class App extends React.Component {
         return (
             <div id='main' className='container'>
                 <Product title='test1' price='100' />
-                <Product title='test2' price='101' />
+                <Product title='test2' price='101' >
+                    <p>test of props children</p>
+                </Product>
                 <Product title='test3' price='99' />
             </div>
         );

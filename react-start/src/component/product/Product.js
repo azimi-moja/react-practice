@@ -6,6 +6,7 @@ const Product = (props) => {
     <div id='main-product'>
         <p>title : {props.title}</p>
         <p>Price : {props.price}</p>
+        <p>{props.children}</p>
         <br />
     </div>
     );
