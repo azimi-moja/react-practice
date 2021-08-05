@@ -28,10 +28,16 @@ class App extends React.Component {
             {title:'test2', price:'101'},
             {title:'test3', price:'99'}
         ]
-    }
+    };
 
     changePriceHandler = () => {
-        console.log("change price");
+        this.setState({
+            products : [
+                {title:'test1', price:'120'},
+                {title:'test2', price:'118'},
+                {title:'test3', price:'115'}
+            ]
+        });
     }
 
     render() {
@@ -39,16 +45,21 @@ class App extends React.Component {
             <div id='main' className='container'>
                 <Product 
                 title={this.state.products[0].title}
-                price={this.state.products[0].price} />
+                price={this.state.products[0].price}
+                />
                 <Product 
                 title={this.state.products[1].title}
-                price={this.state.products[1].price} >
+                price={this.state.products[1].price}
+                >
                     <p>test of props children</p>
                 </Product>
                 <Product 
-                title={this.state.products[1].title}
-                price={this.state.products[1].price} />
-                <button onClick={this.changePriceHandler}>Click!!!</button>
+                title={this.state.products[2].title}
+                price={this.state.products[2].price}
+                />
+                <button onClick={this.changePriceHandler}>
+                    Click!!!
+                </button>
             </div>
         );
     }
