@@ -21,14 +21,29 @@ import Product from './component/product/Product.js'
 // }
 
 class App extends React.Component {
+
+    state = {
+        products : [
+            {title:'test1', price:'100'},
+            {title:'test2', price:'101'},
+            {title:'test3', price:'99'}
+        ]
+    }
+
     render() {
         return (
             <div id='main' className='container'>
-                <Product title='test1' price='100' />
-                <Product title='test2' price='101' >
+                <Product 
+                title={this.state.products[0].title}
+                price={this.state.products[0].price} />
+                <Product 
+                title={this.state.products[1].title}
+                price={this.state.products[1].price} >
                     <p>test of props children</p>
                 </Product>
-                <Product title='test3' price='99' />
+                <Product 
+                title={this.state.products[1].title}
+                price={this.state.products[1].price} />
             </div>
         );
     }
