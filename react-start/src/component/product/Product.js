@@ -2,9 +2,10 @@ import React from 'react';
 
 
 const Product = () => {
+    const param = 89;
     return (
     <div id='main-product'>
-        This is Product
+        <p>test : {param}</p>
     </div>
     );
 };
