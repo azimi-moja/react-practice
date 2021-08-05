@@ -30,6 +30,10 @@ class App extends React.Component {
         ]
     }
 
+    changePriceHandler = () => {
+        console.log("change price");
+    }
+
     render() {
         return (
             <div id='main' className='container'>
@@ -44,6 +48,7 @@ class App extends React.Component {
                 <Product 
                 title={this.state.products[1].title}
                 price={this.state.products[1].price} />
+                <button onClick={this.changePriceHandler}>Click!!!</button>
             </div>
         );
     }
