@@ -24,8 +24,9 @@ class App extends React.Component {
     render() {
         return (
             <div id='main' className='container'>
-                Hello Class Compeont!!!
-                <Product />        
+                <Product title='test1' price='100' />
+                <Product title='test2' price='101' />
+                <Product title='test3' price='99' />
             </div>
         );
     }
