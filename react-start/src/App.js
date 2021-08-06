@@ -110,10 +110,38 @@ const App = (props) => {
         })
     }
 
+    let showProducts = null;
+
     const toggleShowHideHandler = () => {
         setShowHideState({
             toggleShow : !(showHideState.toggleShow)
         })
+    }
+
+    if(showHideState.toggleShow){
+        showProducts = (
+            <div>
+                <Product
+                title={productState.products[0].title}
+                price={productState.products[0].price}
+                clickPrice={() => changePriceHandler("change title")}
+                />
+                <Product 
+                title={productState.products[1].title}
+                price={productState.products[1].price}
+                changeText={changeTextHandler}
+                >
+                    <p>test of props children</p>
+                </Product>
+                <Product 
+                title={productState.products[2].title}
+                price={productState.products[2].price}
+                clickPrice={changePriceHandler.bind(this, "new Title2")}
+                />
+            </div>
+        )
+    } else {
+        showProducts = null;
     }
 
     return (
@@ -121,27 +149,7 @@ const App = (props) => {
         <button style={btnStyle} onClick={toggleShowHideHandler}>
             Click!!!
         </button>
-        {showHideState.toggleShow ? (
-        <div>
-            <Product
-            title={productState.products[0].title}
-            price={productState.products[0].price}
-            clickPrice={() => changePriceHandler("change title")}
-            />
-            <Product 
-            title={productState.products[1].title}
-            price={productState.products[1].price}
-            changeText={changeTextHandler}
-            >
-                <p>test of props children</p>
-            </Product>
-            <Product 
-            title={productState.products[2].title}
-            price={productState.products[2].price}
-            clickPrice={changePriceHandler.bind(this, "new Title2")}
-            />
-        </div>
-        ) : null }
+        {showProducts}
     </div>
     );
 }
