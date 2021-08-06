@@ -86,6 +86,10 @@ const App = (props) => {
         ]
     });
 
+    const [showHideState, setShowHideState] = useState({
+        toggleShow : false
+    });
+
     const changeTextHandler = (event) => {
         setProductState({
             products : [
@@ -106,28 +110,38 @@ const App = (props) => {
         })
     }
 
+    const toggleShowHideHandler = () => {
+        setShowHideState({
+            toggleShow : !(showHideState.toggleShow)
+        })
+    }
+
     return (
     <div id='main' className='container'>
-        <Product
-        title={productState.products[0].title}
-        price={productState.products[0].price}
-        clickPrice={() => changePriceHandler("change title")}
-        />
-        <Product 
-        title={productState.products[1].title}
-        price={productState.products[1].price}
-        changeText={changeTextHandler}
-        >
-            <p>test of props children</p>
-        </Product>
-        <Product 
-        title={productState.products[2].title}
-        price={productState.products[2].price}
-        clickPrice={changePriceHandler.bind(this, "new Title2")}
-        />
-        <button style={btnStyle} onClick={changeTextHandler}>
+        <button style={btnStyle} onClick={toggleShowHideHandler}>
             Click!!!
         </button>
+        {showHideState.toggleShow ? (
+        <div>
+            <Product
+            title={productState.products[0].title}
+            price={productState.products[0].price}
+            clickPrice={() => changePriceHandler("change title")}
+            />
+            <Product 
+            title={productState.products[1].title}
+            price={productState.products[1].price}
+            changeText={changeTextHandler}
+            >
+                <p>test of props children</p>
+            </Product>
+            <Product 
+            title={productState.products[2].title}
+            price={productState.products[2].price}
+            clickPrice={changePriceHandler.bind(this, "new Title2")}
+            />
+        </div>
+        ) : null }
     </div>
     );
 }
