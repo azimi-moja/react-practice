@@ -67,6 +67,17 @@ import Product from './component/product/Product.js'
 
 
 const App = (props) => {
+
+    const btnStyle = {
+        backgroundColor: '#7b1fa2',
+        color: '#ffffff',
+        font: 'inherit',
+        borderRadius: '3px',
+        padding: '0.6 rem',
+        margin: '0.6 rem auto',
+        outline: 'none'
+    }
+
     const [productState, setProductState] = useState({
         products : [
             {title:'test1', price:'100'},
@@ -114,7 +125,7 @@ const App = (props) => {
         price={productState.products[2].price}
         clickPrice={changePriceHandler.bind(this, "new Title2")}
         />
-        <button onClick={changeTextHandler}>
+        <button style={btnStyle} onClick={changeTextHandler}>
             Click!!!
         </button>
     </div>
