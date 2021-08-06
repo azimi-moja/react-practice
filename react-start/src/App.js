@@ -75,6 +75,16 @@ const App = (props) => {
         ]
     });
 
+    const changeTextHandler = (event) => {
+        setProductState({
+            products : [
+                {title: 'tets1', price: '115'},
+                {title: event.target.value, price: '121'},
+                {title: 'test3', price: '131'}
+            ]   
+        })
+    }
+
     const changePriceHandler = (newTitle) => {
         setProductState({
             products : [
@@ -95,6 +105,7 @@ const App = (props) => {
         <Product 
         title={productState.products[1].title}
         price={productState.products[1].price}
+        changeText={changeTextHandler}
         >
             <p>test of props children</p>
         </Product>
@@ -103,7 +114,7 @@ const App = (props) => {
         price={productState.products[2].price}
         clickPrice={changePriceHandler.bind(this, "new Title2")}
         />
-        <button onClick={changePriceHandler}>
+        <button onClick={changeTextHandler}>
             Click!!!
         </button>
     </div>
