@@ -75,10 +75,10 @@ const App = (props) => {
         ]
     });
 
-    const changePriceHandler = () => {
+    const changePriceHandler = (newTitle) => {
         setProductState({
             products : [
-                {title:'test1', price:'115'},
+                {title: newTitle, price:'115'},
                 {title:'test2', price:'121'},
                 {title:'test3', price:'131'}
             ]   
@@ -90,6 +90,7 @@ const App = (props) => {
         <Product
         title={productState.products[0].title}
         price={productState.products[0].price}
+        clickPrice={() => changePriceHandler("change title")}
         />
         <Product 
         title={productState.products[1].title}
@@ -100,6 +101,7 @@ const App = (props) => {
         <Product 
         title={productState.products[2].title}
         price={productState.products[2].price}
+        clickPrice={changePriceHandler.bind(this, "new Title2")}
         />
         <button onClick={changePriceHandler}>
             Click!!!
