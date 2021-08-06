@@ -121,23 +121,11 @@ const App = (props) => {
     if(showHideState.toggleShow){
         showProducts = (
             <div>
-                <Product
-                title={productState.products[0].title}
-                price={productState.products[0].price}
-                clickPrice={() => changePriceHandler("change title")}
-                />
-                <Product 
-                title={productState.products[1].title}
-                price={productState.products[1].price}
-                changeText={changeTextHandler}
-                >
-                    <p>test of props children</p>
-                </Product>
-                <Product 
-                title={productState.products[2].title}
-                price={productState.products[2].price}
-                clickPrice={changePriceHandler.bind(this, "new Title2")}
-                />
+                {
+                    productState.products.map((product) => {
+                       return <Product price={product.price} title={product.title} />
+                    })
+                }
             </div>
         )
     } else {
