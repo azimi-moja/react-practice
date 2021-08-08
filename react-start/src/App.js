@@ -80,9 +80,9 @@ const App = (props) => {
 
     const [productState, setProductState] = useState({
         products : [
-            {title:'test1', price:'100'},
-            {title:'test2', price:'101'},
-            {title:'test3', price:'99'}
+            {id: 1, title:'test1', price:'100'},
+            {id: 2, title:'test2', price:'101'},
+            {id: 3, title:'test3', price:'99'}
         ]
     });
 
@@ -90,22 +90,29 @@ const App = (props) => {
         toggleShow : false
     });
 
-    const changeTextHandler = (event) => {
-        setProductState({
-            products : [
-                {title: 'tets1', price: '115'},
-                {title: event.target.value, price: '121'},
-                {title: 'test3', price: '131'}
-            ]   
-        })
+    const changeTextHandler = (event, id) => {
+        const productIndex = productState.products.findIndex((item) => {
+            return item.id = id;
+        });
+
+        const selectProduct = {
+            ...productState.products[productIndex]
+        };
+
+        selectProduct.title = event.target.value;
+
+        const newProducts = [...productState.products];
+        newProducts[productIndex] = selectProduct;
+
+        setProductState({products : newProducts});
     }
 
     const changePriceHandler = (newTitle) => {
         setProductState({
             products : [
-                {title: newTitle, price:'115'},
-                {title:'test2', price:'121'},
-                {title:'test3', price:'131'}
+                {id: 1, title: newTitle, price:'115'},
+                {id: 2, title:'test2', price:'121'},
+                {id: 3, title:'test3', price:'131'}
             ]   
         })
     }
@@ -122,8 +129,12 @@ const App = (props) => {
         showProducts = (
             <div>
                 {
-                    productState.products.map((product) => {
-                       return <Product price={product.price} title={product.title} />
+                    productState.products.map((prod) => {
+                       return <Product 
+                       price={prod.price} 
+                       title={prod.title}
+                       key={prod.id}
+                       changeText={(event) => changeTextHandler(event, prod.id)} />
                     })
                 }
             </div>
