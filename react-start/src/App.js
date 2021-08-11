@@ -17,6 +17,10 @@ const App = (props) => {
         toggleShow : false
     });
 
+    const [showHideMainState, setShowHideMainState] = useState({
+        toggleMainShow : true
+    });
+
     const changeTextHandler = (event, id) => {
         const productIndex = productState.products.findIndex((item) => {
             return item.id = id;
@@ -56,11 +60,32 @@ const App = (props) => {
         showProducts = null;
     }
 
+    let showMain = null;
+
+    if(showHideMainState.toggleMainShow){
+        showMain = (
+            <div>
+                <Main
+                    toggleShowHide={toggleShowHideHandler}
+                    products={showProducts}
+                />
+            </div>
+        )
+    } else {
+        showMain = null;
+    }
+
+    const removeMainHandler = () => {
+        setShowHideMainState({
+            toggleMainShow : false
+        })
+    }
+
     return (
-    <Main
-    toggleShowHide={toggleShowHideHandler}
-    products={showProducts}
-    />
+        <div>
+            <button onClick={removeMainHandler} >Remove Main</button>
+            {showMain}
+        </div>
     );
 }
 

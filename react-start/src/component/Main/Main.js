@@ -4,7 +4,12 @@ import React, {useEffect} from 'react';
 const Main = (props) => {
 
     useEffect(() => {
-        console.log("useeffect in Main");
+        console.log("useEffect in Main");
+
+        //retun function for cleanup 
+        return () => {
+            console.log("cleanup Main!!!");
+        }
     }, [props.products]); //if use [] just run one in load component  
 
     const btnStyle = {
