@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Wrapper = (props) => {
-    const wrapperStyle = {
-        margin: 'auto',
-        textAlign: 'center'
-    }
-    return (
-        <div style={wrapperStyle}>{props.children}</div>
+
+
+const Wrapper = (WrappedComponent, styleClass) => {
+    return (props) => (
+        <div style={styleClass}>
+            <WrappedComponent />
+        </div>
     );
 }
 

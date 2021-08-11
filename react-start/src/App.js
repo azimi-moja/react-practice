@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ProductList from './component/ProductList/ProductList';
 import Main from './component/Main/Main';
 import Wrapper from './hoc/Wrapper';
+import Container from './hoc/Container';
 
 
 const App = (props) => {
@@ -50,12 +51,12 @@ const App = (props) => {
 
     if(showHideState.toggleShow){
         showProducts = (
-            <Wrapper>
+            <Container>
                 <ProductList
                     products={productState.products}
                     changeText={changeTextHandler}
                 />
-            </Wrapper>
+            </Container>
         )
     } else {
         showProducts = null;
@@ -90,4 +91,9 @@ const App = (props) => {
     );
 }
 
-export default App;
+const wrapperStyle = {
+    margin: 'auto',
+    textAlign: 'center'
+}
+
+export default Wrapper(App, {wrapperStyle});
