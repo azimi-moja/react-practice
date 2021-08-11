@@ -5,7 +5,7 @@ const Main = (props) => {
 
     useEffect(() => {
         console.log("useeffect in Main");
-    });
+    }, [props.products]); //if use [] just run one in load component  
 
     const btnStyle = {
         backgroundColor: '#7b1fa2',
