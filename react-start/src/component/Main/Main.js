@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 const Main = (props) => {
+
+    useEffect(() => {
+        console.log("useeffect in Main");
+    });
 
     const btnStyle = {
         backgroundColor: '#7b1fa2',
