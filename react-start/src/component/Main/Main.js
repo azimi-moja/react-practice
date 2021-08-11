@@ -23,14 +23,14 @@ const Main = (props) => {
     }
 
     return (
-        <div>
+        <React.Fragment>
             <div id='main' className='container'>
                 <button style={btnStyle} onClick={props.toggleShowHide}>
                     Click!!!
                 </button>
                 {props.products}
-                </div>
-        </div>
+            </div>
+        </React.Fragment>
     );
 };
 
