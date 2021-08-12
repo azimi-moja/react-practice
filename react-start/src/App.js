@@ -3,6 +3,7 @@ import ProductList from './component/ProductList/ProductList';
 import Main from './component/Main/Main';
 import Wrapper from './hoc/Wrapper';
 import Container from './hoc/Container';
+import './app.css';
 
 
 const App = (props) => {
@@ -91,9 +92,4 @@ const App = (props) => {
     );
 }
 
-const wrapperStyle = {
-    margin: 'auto',
-    textAlign: 'center'
-}
-
-export default Wrapper(App, {wrapperStyle});
+export default Wrapper(App, 'center');

@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import './Main.css';
+import Wrapper from '../../hoc/Wrapper';
 
 
 const Main = (props) => {
@@ -34,4 +36,4 @@ const Main = (props) => {
     );
 };
 
-export default Main;
+export default Wrapper(Main, 'container');
