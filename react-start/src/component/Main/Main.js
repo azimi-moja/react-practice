@@ -1,16 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './Main.css';
 import Wrapper from '../../hoc/Wrapper';
-
+import AuthContext from '../../context/auth-context';
 
 const Main = (props) => {
 
-    const btnRef = useRef(null);
+    const authCntx = useContext(AuthContext);
+    console.log(authCntx);
 
     useEffect(() => {
         console.log("useEffect in Main");
-
-        btnRef.current.click();
 
         //retun function for cleanup 
         return () => {
@@ -32,12 +31,12 @@ const Main = (props) => {
         <React.Fragment>
             <div id='main' className='container'>
                 <button
-                    ref = {btnRef}
                     style={btnStyle}
                     onClick={props.toggleShowHide}
                 >
                     Click!!!
                 </button>
+                <button onClick={authCntx.login} >Login</button>
                 {props.products}
             </div>
         </React.Fragment>

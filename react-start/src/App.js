@@ -1,27 +1,32 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ProductList from './component/ProductList/ProductList';
 import Main from './component/Main/Main';
 import Wrapper from './hoc/Wrapper';
 import Container from './hoc/Container';
 import './app.css';
+import AuthContext from './context/auth-context';
 
 
 const App = (props) => {
 
     const [productState, setProductState] = useState({
-        products : [
-            {id: 1, title:'test1', price:'100'},
-            {id: 2, title:'test2', price:'101'},
-            {id: 3, title:'test3', price:'99'}
+        products: [
+            { id: 1, title: 'test1', price: '100' },
+            { id: 2, title: 'test2', price: '101' },
+            { id: 3, title: 'test3', price: '99' }
         ]
     });
 
     const [showHideState, setShowHideState] = useState({
-        toggleShow : false
+        toggleShow: false
     });
 
     const [showHideMainState, setShowHideMainState] = useState({
-        toggleMainShow : true
+        toggleMainShow: true
+    });
+
+    const [authState, setAuthstate] = useState({
+        auth: false
     });
 
     const changeTextHandler = (event, id) => {
@@ -39,24 +44,33 @@ const App = (props) => {
         const newProducts = [...productState.products];
         newProducts[productIndex] = selectProduct;
 
-        setProductState({products : newProducts});
+        setProductState({ products: newProducts });
     }
 
     let showProducts = null;
 
     const toggleShowHideHandler = () => {
         setShowHideState({
-            toggleShow : !(showHideState.toggleShow)
-        })
+            toggleShow: !(showHideState.toggleShow)
+        });
     }
 
-    if(showHideState.toggleShow){
+    const loginHandler = () => {
+        setAuthstate({
+            auth: !authState.auth
+        });
+        console.log(authState.auth);
+    }
+
+    if (showHideState.toggleShow) {
         showProducts = (
             <Container>
-                <ProductList
-                    products={productState.products}
-                    changeText={changeTextHandler}
-                />
+                <AuthContext.Provider value={{ auth: authState.auth, login: loginHandler }}>
+                    <ProductList
+                        products={productState.products}
+                        changeText={changeTextHandler}
+                    />
+                </AuthContext.Provider>
             </Container>
         )
     } else {
@@ -65,7 +79,7 @@ const App = (props) => {
 
     let showMain = null;
 
-    if(showHideMainState.toggleMainShow){
+    if (showHideMainState.toggleMainShow) {
         showMain = (
             <div>
                 <Main
@@ -80,7 +94,7 @@ const App = (props) => {
 
     const removeMainHandler = () => {
         setShowHideMainState({
-            toggleMainShow : false
+            toggleMainShow: false
         })
     }
 

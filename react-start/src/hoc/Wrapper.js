@@ -4,7 +4,7 @@ import React from 'react';
 
 const Wrapper = (WrappedComponent, styleClass) => {
     return (props) => (
-        <div styleClass={styleClass}>
+        <div styleclass={styleClass}>
             <WrappedComponent  {...props} />
         </div>
     );
