@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Main.css';
 import Wrapper from '../../hoc/Wrapper';
 
 
 const Main = (props) => {
 
+    const btnRef = useRef(null);
+
     useEffect(() => {
         console.log("useEffect in Main");
+
+        btnRef.current.click();
 
         //retun function for cleanup 
         return () => {
@@ -27,7 +31,11 @@ const Main = (props) => {
     return (
         <React.Fragment>
             <div id='main' className='container'>
-                <button style={btnStyle} onClick={props.toggleShowHide}>
+                <button
+                    ref = {btnRef}
+                    style={btnStyle}
+                    onClick={props.toggleShowHide}
+                >
                     Click!!!
                 </button>
                 {props.products}
